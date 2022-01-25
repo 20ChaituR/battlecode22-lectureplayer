@@ -1,4 +1,4 @@
-package examplefuncsplayer;
+package playerv0;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
