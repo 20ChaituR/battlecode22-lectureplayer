@@ -1,16 +1,17 @@
 /*
  * Changelog:
- *   Builder builds laboratories every 150 turns
+ *   Builder now repairs any nearby buildings
+ *   Builder moves towards damaged buildings (or randomly if there is none nearby)
+ *   Builder builds watchtowers every 100 turns
  */
 
-package playerv1.p4;
+package playerv1.p3;
 
 import battlecode.common.*;
 
 strictfp class BuilderStrategy {
 
     static int turnsSinceWatchTower = 0;
-    static int turnsSinceLaboratory = 0;
 
     /**
      * Run a single turn for a Builder.
@@ -60,18 +61,6 @@ strictfp class BuilderStrategy {
             if (rc.canMove(dir)) {
                 rc.move(dir);
                 System.out.println("I moved randomly!");
-            }
-        }
-
-        // Try to build a laboratory every 150 turns
-        turnsSinceLaboratory++;
-        if (rc.getTeamLeadAmount(rc.getTeam()) > 10000 && turnsSinceLaboratory >= 150) {
-            int directionIndex = RobotPlayer.rng.nextInt(RobotPlayer.directions.length);
-            Direction dir = RobotPlayer.directions[directionIndex];
-
-            if (rc.canBuildRobot(RobotType.LABORATORY, dir)) {
-                rc.buildRobot(RobotType.LABORATORY, dir);
-                turnsSinceLaboratory = 0;
             }
         }
 

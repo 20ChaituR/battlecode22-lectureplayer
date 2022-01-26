@@ -1,6 +1,6 @@
 /*
  * Changelog:
- *   Moved Builder strategy to separate class.
+ *   Moved Laboratory strategy to separate class.
  */
 
 package playerv1.p4;
@@ -78,8 +78,8 @@ public strictfp class RobotPlayer {
                     case ARCHON:     ArchonStrategy.runArchon(rc);  break;
                     case MINER:      MinerStrategy.runMiner(rc);   break;
                     case SOLDIER:    runSoldier(rc); break;
-                    case LABORATORY: runLaboratory(rc); break;
-                    case WATCHTOWER: runWatchtower(rc); break;
+                    case LABORATORY: LaboratoryStrategy.runLaboratory(rc); break;
+                    case WATCHTOWER: WatchTowerStrategy.runWatchtower(rc); break;
                     case BUILDER:    BuilderStrategy.runBuilder(rc); break;
                     case SAGE:       runSage(rc); break;
                 }
@@ -129,20 +129,6 @@ public strictfp class RobotPlayer {
             rc.move(dir);
             System.out.println("I moved!");
         }
-    }
-
-    /**
-     * Run a single turn for a Laboratory.
-     * This code is wrapped inside the infinite loop in run(), so it is called once per turn.
-     */
-    static void runLaboratory(RobotController rc) throws GameActionException {
-    }
-
-    /**
-     * Run a single turn for a Watchtower.
-     * This code is wrapped inside the infinite loop in run(), so it is called once per turn.
-     */
-    static void runWatchtower(RobotController rc) throws GameActionException {
     }
 
     /**

@@ -1,6 +1,10 @@
 /*
  * Changelog:
  *   Archon now builds in direction of lowest rubble (instead of random direction)
+ *   Additionally, now Archon builds builders
+ *   Added scheduling to Archon builds
+ *     Makes sure there are at least a certain amount of each robot
+ *     Makes sure the ratio between robots is kept (5 miners : 10 soldiers : 1 builder)
  */
 
 package playerv1.p3;
@@ -12,18 +16,26 @@ import java.util.Comparator;
 
 strictfp class ArchonStrategy {
 
+    static int miners = 0, soldiers = 0, builders = 0;
+
     /**
      * Run a single turn for an Archon.
      * This code is wrapped inside the infinite loop in run(), so it is called once per turn.
      */
     static void runArchon(RobotController rc) throws GameActionException {
-        if (RobotPlayer.rng.nextBoolean()) {
-            // Let's try to build a miner.
-            rc.setIndicatorString("Trying to build a miner");
+        if (miners < 5) {
             buildTowardsLowRubble(rc, RobotType.MINER);
+        } else if (soldiers < 10) {
+            buildTowardsLowRubble(rc, RobotType.SOLDIER);
+        } else if (builders < 1) {
+            buildTowardsLowRubble(rc, RobotType.BUILDER);
+        }
+
+        else if (miners < soldiers / 2 && rc.getTeamLeadAmount(rc.getTeam()) < 5000) {
+            buildTowardsLowRubble(rc, RobotType.MINER);
+        } else if (builders < soldiers / 10) {
+            buildTowardsLowRubble(rc, RobotType.BUILDER);
         } else {
-            // Let's try to build a soldier.
-            rc.setIndicatorString("Trying to build a soldier");
             buildTowardsLowRubble(rc, RobotType.SOLDIER);
         }
     }
@@ -40,6 +52,12 @@ strictfp class ArchonStrategy {
         for (Direction dir : dirs) {
             if (rc.canBuildRobot(type, dir)) {
                 rc.buildRobot(type, dir);
+                switch (type) {
+                    case MINER: miners++; break;
+                    case SOLDIER: soldiers++; break;
+                    case BUILDER: builders++; break;
+                    default: break;
+                }
             }
         }
     }

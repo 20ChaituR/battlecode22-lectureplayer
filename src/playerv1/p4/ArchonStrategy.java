@@ -1,11 +1,3 @@
-/*
- * Changelog:
- *   Now additionally builds builders
- *   Added scheduling to Archon builds
- *     Makes sure there are at least a certain amount of each robot
- *     Makes sure the ratio between robots is kept (5 miners : 10 soldiers : 1 builder)
- */
-
 package playerv1.p4;
 
 import battlecode.common.*;

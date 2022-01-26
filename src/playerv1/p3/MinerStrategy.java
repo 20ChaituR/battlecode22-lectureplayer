@@ -62,18 +62,21 @@ strictfp class MinerStrategy {
             Direction toMove = me.directionTo(targetLocation);
             if (rc.canMove(toMove)) {
                 rc.move(toMove);
+                System.out.println("I moved to " + targetLocation);
             }
 
         // Otherwise, move in the explore direction.
         } else {
             if (rc.canMove(exploreDir)) {
                 rc.move(exploreDir);
+                System.out.println("I moved " + exploreDir);
 
             // Bounce off walls
             } else if (!rc.onTheMap(me.add(exploreDir))) {
                 exploreDir = exploreDir.opposite();
                 if (rc.canMove(exploreDir)) {
                     rc.move(exploreDir);
+                    System.out.println("I moved " + exploreDir);
                 }
             }
 
@@ -82,7 +85,7 @@ strictfp class MinerStrategy {
             Direction dir = RobotPlayer.directions[directionIndex];
             if (rc.canMove(dir)) {
                 rc.move(dir);
-                System.out.println("I moved!");
+                System.out.println("I moved randomly!");
             }
         }
     }

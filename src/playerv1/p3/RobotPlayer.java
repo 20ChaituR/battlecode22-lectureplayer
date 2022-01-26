@@ -1,6 +1,8 @@
 /*
  * Changelog:
  *   Moved Archon strategy to separate class.
+ *   Moved Builder strategy to separate class.
+ *   Moved Watch Tower strategy to separate class.
  */
 
 package playerv1.p3;
@@ -79,8 +81,8 @@ public strictfp class RobotPlayer {
                     case MINER:      MinerStrategy.runMiner(rc);   break;
                     case SOLDIER:    runSoldier(rc); break;
                     case LABORATORY: runLaboratory(rc); break;
-                    case WATCHTOWER: runWatchtower(rc); break;
-                    case BUILDER:    runBuilder(rc); break;
+                    case WATCHTOWER: WatchTowerStrategy.runWatchtower(rc); break;
+                    case BUILDER:    BuilderStrategy.runBuilder(rc); break;
                     case SAGE:       runSage(rc); break;
                 }
             } catch (GameActionException e) {
@@ -136,20 +138,6 @@ public strictfp class RobotPlayer {
      * This code is wrapped inside the infinite loop in run(), so it is called once per turn.
      */
     static void runLaboratory(RobotController rc) throws GameActionException {
-    }
-
-    /**
-     * Run a single turn for a Watchtower.
-     * This code is wrapped inside the infinite loop in run(), so it is called once per turn.
-     */
-    static void runWatchtower(RobotController rc) throws GameActionException {
-    }
-
-    /**
-     * Run a single turn for a Builder.
-     * This code is wrapped inside the infinite loop in run(), so it is called once per turn.
-     */
-    static void runBuilder(RobotController rc) throws GameActionException {
     }
 
     /**
