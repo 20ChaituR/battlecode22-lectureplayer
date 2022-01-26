@@ -1,12 +1,6 @@
-/*
- * Changelog:
- *   Moved Soldier strategy to separate class
- */
-
-package playerv2.p1;
+package submittedPlayer;
 
 import battlecode.common.*;
-
 import java.util.Random;
 
 /**
@@ -33,14 +27,14 @@ public strictfp class RobotPlayer {
 
     /** Array containing all the possible movement directions. */
     static final Direction[] directions = {
-        Direction.NORTH,
-        Direction.NORTHEAST,
-        Direction.EAST,
-        Direction.SOUTHEAST,
-        Direction.SOUTH,
-        Direction.SOUTHWEST,
-        Direction.WEST,
-        Direction.NORTHWEST,
+            Direction.NORTH,
+            Direction.NORTHEAST,
+            Direction.EAST,
+            Direction.SOUTHEAST,
+            Direction.SOUTH,
+            Direction.SOUTHWEST,
+            Direction.WEST,
+            Direction.NORTHWEST,
     };
 
     /**
@@ -75,13 +69,13 @@ public strictfp class RobotPlayer {
                 // use different strategies on different robots. If you wish, you are free to rewrite
                 // this into a different control structure!
                 switch (rc.getType()) {
-                    case ARCHON:     ArchonStrategy.runArchon(rc);  break;
-                    case MINER:      MinerStrategy.runMiner(rc);   break;
-                    case SOLDIER:    SoldierStrategy.runSoldier(rc); break;
-                    case LABORATORY: LaboratoryStrategy.runLaboratory(rc); break;
-                    case WATCHTOWER: WatchTowerStrategy.runWatchtower(rc); break;
-                    case BUILDER:    BuilderStrategy.runBuilder(rc); break;
-                    case SAGE:       runSage(rc); break;
+                    case ARCHON:     Archon.runArchon(rc);  break;
+                    case MINER:      Miner.runMiner(rc);   break;
+                    case SOLDIER:    Soldier.runSoldier(rc); break;
+                    case LABORATORY: // Examplefuncsplayer doesn't use any of these robot types below.
+                    case WATCHTOWER: // You might want to give them a try!
+                    case BUILDER:
+                    case SAGE:       break;
                 }
             } catch (GameActionException e) {
                 // Oh no! It looks like we did something illegal in the Battlecode world. You should
@@ -108,10 +102,16 @@ public strictfp class RobotPlayer {
     }
 
     /**
-     * Run a single turn for a Sage.
+     * Run a single turn for an Archon.
      * This code is wrapped inside the infinite loop in run(), so it is called once per turn.
      */
-    static void runSage(RobotController rc) throws GameActionException {
-    }
+
+
+
+
+    /**
+     * Run a single turn for a Soldier.
+     * This code is wrapped inside the infinite loop in run(), so it is called once per turn.
+     */
 
 }
