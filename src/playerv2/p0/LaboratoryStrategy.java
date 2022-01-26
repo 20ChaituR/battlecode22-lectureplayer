@@ -1,9 +1,4 @@
-/*
- * Changelog:
- *   Laboratory greedily tries to transmute lead if amount is above threshold
- */
-
-package playerv1.p4;
+package playerv2.p0;
 
 import battlecode.common.GameActionException;
 import battlecode.common.RobotController;
