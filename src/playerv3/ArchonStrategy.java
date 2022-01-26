@@ -1,4 +1,4 @@
-package playerv3.p0;
+package playerv3;
 
 import java.util.Arrays;
 

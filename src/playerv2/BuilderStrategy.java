@@ -3,7 +3,7 @@
  *   Used Pathing for Builder movement
  */
 
-package playerv2.p0;
+package playerv2;
 
 import battlecode.common.*;
 

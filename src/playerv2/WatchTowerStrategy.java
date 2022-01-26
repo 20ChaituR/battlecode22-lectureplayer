@@ -1,9 +1,14 @@
-package playerv3.p0;
+package playerv2;
 
 import battlecode.common.*;
 
-strictfp class WatchTowerStrategy{
-    static void runWatchTower(RobotController rc) throws GameActionException {
+strictfp class WatchTowerStrategy {
+
+    /**
+     * Run a single turn for a Watchtower.
+     * This code is wrapped inside the infinite loop in run(), so it is called once per turn.
+     */
+    static void runWatchtower(RobotController rc) throws GameActionException {
         // Try to attack someone
         int radius = rc.getType().actionRadiusSquared;
         Team opponent = rc.getTeam().opponent();
@@ -15,4 +20,5 @@ strictfp class WatchTowerStrategy{
             }
         }
     }
+
 }

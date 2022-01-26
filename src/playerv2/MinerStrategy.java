@@ -3,14 +3,12 @@
  *   Used Pathing for Miner movement
  */
 
-package playerv2.p0;
+package playerv2;
 
 import battlecode.common.Direction;
 import battlecode.common.GameActionException;
 import battlecode.common.MapLocation;
 import battlecode.common.RobotController;
-
-import java.nio.file.Path;
 
 strictfp class MinerStrategy {
 

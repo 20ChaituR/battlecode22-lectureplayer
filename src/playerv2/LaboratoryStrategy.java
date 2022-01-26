@@ -1,4 +1,4 @@
-package playerv2.p0;
+package playerv2;
 
 import battlecode.common.GameActionException;
 import battlecode.common.RobotController;

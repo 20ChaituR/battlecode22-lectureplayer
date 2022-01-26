@@ -4,7 +4,7 @@
  *   with obstacles in the way
  */
 
-package playerv2.p0;
+package playerv2;
 
 import battlecode.common.*;
 

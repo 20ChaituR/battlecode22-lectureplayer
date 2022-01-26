@@ -1,4 +1,4 @@
-package submittedPlayer;
+package playerv0.p1;
 
 import battlecode.common.*;
 import java.util.Random;
